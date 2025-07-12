@@ -1,7 +1,7 @@
 # Simple Budget Planner
 A command-line Python application to help you track your income and expenses.
 
-#### Video Demo: 
+#### Video Demo: https://youtu.be/_AudoEfR3ZA?si=jZnrno3K19upVnB_
 #### Description:
 
 Simple Budget Planner is a Python command-line application that allows users to manage their personal finances by tracking income and daily expenses. This tool was created as a final project for CS50’s Introduction to Programming with Python.
@@ -31,7 +31,7 @@ The goal of the project was to simulate a real-world budget tracking tool using 
 
 ## Design Decisions
 
-One key design decision was to use a simple text file (`data1.txt`) for data storage instead of a database or CSV/JSON format. This was intentional to keep the project aligned with the concepts taught in CS50P. The program ensures that data is preserved across sessions by appending or rewriting this file depending on the user’s actions.
+One key design decision was to use a simple text file (`data.txt`) for data storage instead of a database or CSV/JSON format. This was intentional to keep the project aligned with the concepts taught in CS50P. The program ensures that data is preserved across sessions by appending or rewriting this file depending on the user’s actions.
 
 To make the application user-friendly and resilient, robust error handling was added, particularly around user input. Invalid inputs (like strings instead of numbers or negative values) are handled gracefully with informative prompts.
 
