@@ -23,22 +23,6 @@ def load_data():
     return income, expenses
 
 
-def add_expense(expenses):
-    category = input("Enter Expense Category: ").lower()
-    while True:
-        try:
-            amt = float(input("Enter Expense Amount: "))
-            if amt < 0:
-                raise ValueError
-            expenses.append((category, amt))
-            with open(DATA_FILE, "a") as file:
-                file.write('\n' + category + "," + str(amt))
-            break
-        except ValueError:
-            print("Please enter valid amount")
-    print("Expense has been added!!!")
-
-
 def set_income(expenses):
     income = 0
     while True:
@@ -54,6 +38,22 @@ def set_income(expenses):
             continue
     print("Income has been set to", income)
     return income
+
+
+def add_expense(expenses):
+    category = input("Enter Expense Category: ").lower()
+    while True:
+        try:
+            amt = float(input("Enter Expense Amount: "))
+            if amt < 0:
+                raise ValueError
+            expenses.append((category, amt))
+            with open(DATA_FILE, "a") as file:
+                file.write(f"'\n'{category},{str(amt)}")
+            break
+        except ValueError:
+            print("Please enter valid amount")
+    print("Expense has been added!!!")
 
 
 def delete_expense(income, expenses):
@@ -124,13 +124,6 @@ def edit_expense(income, expenses):
     print("Expense edited successfully!!!")
 
 
-def write_all_data(income, expenses):
-    with open(DATA_FILE, "w") as file:
-        file.write(str(income))
-        for category, amt in expenses:
-            file.write('\n' + category + "," + str(amt))
-
-
 def view_expenses(expenses):
     total = 0
     if not expenses:
@@ -157,6 +150,13 @@ def view_summary(income, expenses):
     print("Total Expenses:", total)
     print("Total Income:", income)
     print("Balance:", income - total)
+
+
+def write_all_data(income, expenses):
+    with open(DATA_FILE, "w") as file:
+        file.write(str(income))
+        for category, amt in expenses:
+            file.write(f"\n{category},{str(amt)}")
 
 
 def clear():
@@ -205,6 +205,6 @@ def main():
         else:
             print("Invalid Choice")
 
-
+            
 if __name__ == '__main__':
     main()
